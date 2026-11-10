@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>运多AI · 轨迹查询演示</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="页面">
+    <header class="顶部">
+      <div>
+        <h1>运多AI · 轨迹查询演示</h1>
+        <p class="小字">模拟数据，仅用于演示</p>
+      </div>
+      <nav class="标签栏">
+        <button type="button" id="标签对话" class="标签 当前">对话</button>
+        <button type="button" id="标签评测" class="标签">评测</button>
+      </nav>
+    </header>
+
+    <div class="主体" id="对话页">
+      <section class="左栏">
+        <div class="账号栏">
+          <label for="账号选择">当前账号</label>
+          <select id="账号选择"></select>
+          <span id="仓库标签" class="仓库标签"></span>
+        </div>
+
+        <main id="聊天区" class="聊天区"></main>
+
+        <footer class="底部">
+          <div id="补推栏" class="补推栏" hidden>
+            <button type="button" id="快进补推">快进补推</button>
+            <span class="补推说明">真实场景约 1 分钟后自动补推</span>
+          </div>
+          <div id="示例区" class="示例区"></div>
+          <form id="输入表单" class="输入行" autocomplete="off">
+            <input id="输入框" type="text" placeholder="请输入运单号，例如：1Z999AA10123456784 到哪了？" />
+            <button type="submit" id="发送按钮">发送</button>
+          </form>
+        </footer>
+      </section>
+
+      <aside class="右栏">
+        <div class="面板头">
+          <h2>这一轮发生了什么</h2>
+          <p class="面板说明">模型负责听懂和表达；规则、工具层、接口负责鉴权和查数据。</p>
+        </div>
+        <div id="步骤列表" class="步骤列表"></div>
+      </aside>
+    </div>
+
+    <section id="评测页" class="评测页" hidden>
+      <div class="评测顶">
+        <button type="button" id="运行评测">运行评测</button>
+        <p class="评测说明">同步检查，直接调用现有的「生成回答」。超时用例只看立刻返回的兜底话术，不会等待 1 分钟。</p>
+      </div>
+      <div id="评测结果">
+        <p class="步骤空">点「运行评测」后，这里显示 3 个指标和逐条结果。</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 顺序不能反：先加载数据，再加载页面逻辑 -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
